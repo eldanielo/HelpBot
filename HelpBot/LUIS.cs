@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using System.Web;
 using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Builder.Luis;
+using Microsoft.Bot.Connector;
+using Newtonsoft.Json.Linq;
 
 namespace HelpBot
 {
@@ -14,10 +16,22 @@ namespace HelpBot
     public class LUIS : LuisDialog<object>
     {
 
+        public async Task StartAsync(IDialogContext context)
+        {
+            context.Wait(MessageReceivedAsync);
+        }
+        public async Task MessageReceivedAsync(IDialogContext context, IAwaitable<Message> argument)
+        {
+            var message = await argument;
+            await context.PostAsync("You said: " + message.Text);
+            context.Wait(MessageReceivedAsync);
+        }
+
         [LuisIntent("")]
         public async Task None(IDialogContext context, LuisResult result)
         {
-            string message = $"Sorry I did not understand: " + string.Join(", ", result.Intents.Select(i => i.Intent));
+            
+            string message = $"Sorry I did not understand: " +result.Query;
 
             message += " \n query: " + result.Query;
                 await context.PostAsync(message);
@@ -25,8 +39,9 @@ namespace HelpBot
         }
 
 
+
         [LuisIntent("lawnmowing")]
-        public async Task FindAlarm(IDialogContext context, LuisResult result)
+        public async Task lawnmowing(IDialogContext context, LuisResult result)
         {
 
             
@@ -39,11 +54,36 @@ namespace HelpBot
             context.Wait(MessageReceived);
         }
 
-        public String getCity()
+        [LuisIntent("howareyou")]
+        public async Task howareyou(IDialogContext context, LuisResult result)
+        {
+            string ip = GetIPAddress();
+            dynamic city = getCity();
+            string resp = " query: " + result.Query + " city " + city;
+            await context.PostAsync(resp);
+            context.Wait(MessageReceived);
+        }
+
+        [LuisIntent("find")]
+        public async Task find(IDialogContext context, LuisResult result)
+        {
+            string ip = GetIPAddress();
+            dynamic location = getCity();
+            string entity = result.Entities[0].Entity;
+            string resp = "Die näheste " + entity + " von "  +location.zipCode+ location.cityName +" ist Josef-Holaubek-Platz 1 1090 Wien";
+    
+                   
+            await context.PostAsync(resp);
+            context.Wait(MessageReceived);
+        }
+
+        public dynamic getCity()
         {
             //2da7d59b916ec038bdb243d2adf389f4958d5f8e9fe8cf6fb838d72cef829bbf
-
-            return new WebClient().DownloadString("http://api.ipinfodb.com/v3/ip-city/?key=2da7d59b916ec038bdb243d2adf389f4958d5f8e9fe8cf6fb838d72cef829bbf");
+        
+            string s = new WebClient().DownloadString("http://api.ipinfodb.com/v3/ip-city/?key=2da7d59b916ec038bdb243d2adf389f4958d5f8e9fe8cf6fb838d72cef829bbf&format=json");
+            dynamic location = JObject.Parse(s);
+            return location;
         }
         protected string GetIPAddress()
         {

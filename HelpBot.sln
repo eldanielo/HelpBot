@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelpBot", "HelpBot\HelpBot.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication1", "WebApplication1\WebApplication1.csproj", "{0328601D-791C-4DF4-B16E-FDF0A65752C5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "debug", "debug\debug.csproj", "{133A48A3-12CC-4530-8C48-44DB4301E58C}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,10 +21,6 @@ Global
 		{0328601D-791C-4DF4-B16E-FDF0A65752C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0328601D-791C-4DF4-B16E-FDF0A65752C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0328601D-791C-4DF4-B16E-FDF0A65752C5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{133A48A3-12CC-4530-8C48-44DB4301E58C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{133A48A3-12CC-4530-8C48-44DB4301E58C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{133A48A3-12CC-4530-8C48-44DB4301E58C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{133A48A3-12CC-4530-8C48-44DB4301E58C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

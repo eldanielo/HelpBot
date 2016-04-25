@@ -116,7 +116,6 @@
     <Compile Include="Controllers\MessagesController.cs" />
     <Compile Include="Diebstahlsanzeige.cs" />
     <Compile Include="Dialog.cs" />
-    <Compile Include="EchoDialog.cs" />
     <Compile Include="GeoLocator.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

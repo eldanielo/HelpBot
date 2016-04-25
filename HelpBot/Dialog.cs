@@ -37,6 +37,13 @@ namespace HelpBot
             {
                 switch (model.intents[0].intent)
                 {
+                    case "hi":
+                       
+                        await context.PostAsync("Hallo! Versuch mal: Where is the nearest police station?");
+                        await context.PostAsync("Oder: Can I park here?");
+                        await context.PostAsync("Oder: I was robbed!");
+                        context.Wait(MessageReceivedAsync);
+                        break;
                     case "howareyou":
                         PostAndWait(context, "gut, und dir?");
                         break;
@@ -45,12 +52,14 @@ namespace HelpBot
                         if (model.entities.Count() > 0)
                         {
                             entity = model.entities.FirstOrDefault(e => e.type == "Amt").entity;
+                            resp = "Die näheste " + entity + " von Ihrer Position (" + GeoLocator.getCity().zipCode + " " + GeoLocator.getCity().cityName + ") ist Josef-Holaubek-Platz 1 1090 Wien (DUMMY DATEN)";
+
                         }
                         else
                         {
-
+                            resp = "Ich konnt das leider nicht finden";
+                       
                         }
-                        resp = "Die näheste " + entity + " von " + GeoLocator.getCity().zipCode + " " + GeoLocator.getCity().cityName + " ist Josef-Holaubek-Platz 1 1090 Wien";
                         PostAndWait(context, resp);
                         break;
                     case "ReportTheft":
@@ -61,7 +70,6 @@ namespace HelpBot
 
                         string isKurzpark = "keine";
                         string geo = "";
-                        DateTime time;
                         if (model.entities.Count() > 0)
                         {
                             geo = model.entities.FirstOrDefault(e => e.type == "builtin.geography.city").entity;
@@ -92,6 +100,7 @@ namespace HelpBot
         private async void PostAndWait(IDialogContext context, string resp)
         {
             await context.PostAsync(resp);
+    
             context.Wait(MessageReceivedAsync);
         }
         static List<String> docs = new List<string> { "geburtsurkunde", "heiratsurkunde", "sterbeurkunde", "führerschein", "reisepass", "personalausweis", "identitätsausweis", "staatsbürgerschaftsnachweis" };

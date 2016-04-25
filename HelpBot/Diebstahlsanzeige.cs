@@ -14,11 +14,7 @@ namespace HelpBot
         public static IForm<Diebstahlsanzeige> BuildForm()
         {
 
-            CompletionDelegate<Diebstahlsanzeige> processOrder = async (context, state) =>
-            {
-
-                await context.PostAsync("Ihre Anzeige wurde aufgenommen und die Ermittlungen haben begonnen");
-            };
+    
             return new FormBuilder<Diebstahlsanzeige>()
                     .Message("Um Ihren Fall bestmöglich behandeln zu können geben Sie uns bitte folgende Informationen")
                     .Build();

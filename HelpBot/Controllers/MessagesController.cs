@@ -24,20 +24,22 @@ namespace HelpBot
         /// Receive a message from a user and reply to it
         /// </summary>
         /// 
-     
+
+
         public async Task<Message> Post([FromBody]Message message)
         {
-
-          
-            if (message.Attachments.Count > 0) {
-                if (message.Text.Length == 0) {
-                    return await Conversation.SendAsync(message, () => new NoTextDialog());
-                }
-
+            if (message.Type == "Message")
+            {
+                // return our reply to the user
+                return await Conversation.SendAsync(message, () => new Dialog());
             }
-            return await Conversation.SendAsync(message, () => new LUISDialog());
-
+            else
+            {
+                return HandleSystemMessage(message);
+            }
         }
+
+
         private Message HandleSystemMessage(Message message)
         {
             if (message.Type == "Ping")

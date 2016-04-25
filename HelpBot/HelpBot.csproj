@@ -46,8 +46,8 @@
       <HintPath>..\packages\Autofac.3.5.2\lib\net40\Autofac.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.Bot.Builder, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Bot.Builder.1.0.2.0\lib\net45\Microsoft.Bot.Builder.dll</HintPath>
+    <Reference Include="Microsoft.Bot.Builder, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bot.Builder.1.1.0.0\lib\net45\Microsoft.Bot.Builder.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Bot.Connector, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -115,10 +115,13 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\MessagesController.cs" />
     <Compile Include="Diebstahlsanzeige.cs" />
+    <Compile Include="Dialog.cs" />
+    <Compile Include="EchoDialog.cs" />
     <Compile Include="GeoLocator.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="LUISModel.cs" />
     <Compile Include="NoTextDialog.cs" />
     <Compile Include="LUISDialog.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -152,7 +155,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>3978</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:3978/</IISUrl>
+          <IISUrl>http://localhost:3979/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

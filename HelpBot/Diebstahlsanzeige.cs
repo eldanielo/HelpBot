@@ -25,10 +25,9 @@ namespace HelpBot
         [Serializable]
         public class Person
         {
+          
             [Prompt("Was ist Ihr {&}? ")]
-            public String Vorname { get; set; }
-            [Prompt("Was ist Ihr {&}? ")]
-            public String Nachname { get; set; }
+            public String Name { get; set; }
             public enum geschlecht { Männlich, Weiblich };
             [Prompt("Was ist Ihr {&}? {||}")]
             public geschlecht? Geschlecht { get; set; }
@@ -42,17 +41,8 @@ namespace HelpBot
         [Serializable]
         public class Adresse
         {
-            [Prompt("In welcher Straße ist die Tat geschehen ")]
-            public string Straße { get; set; }
-            [Optional]
-            [Numeric(0,double.MaxValue)]
-            [Prompt("Was ist die Türnummer? ")]
-            public string Türnummer { get; set; }
-            [Prompt("In welcher {&} ist die Tat geschehen? ")]
-            public string Stadt { get; set; }
-            [Numeric(0, double.MaxValue)]
-            [Prompt("Was ist die Postleitzahl? ")]
-            public string Zip { get; set; }
+            [Prompt("Wo ist die Tat geschehen?")]
+            public string Location { get; set; }
         }
         [Serializable]
         public class Tat
@@ -61,10 +51,8 @@ namespace HelpBot
             [Template(TemplateUsage.Help, "Geben Sie das Datum in der Form 1.1.2016 ein")]
             public DateTime Tatzeit { get; set; }
             [Prompt("Was wurde gestohlen? ")]
+            [Template(TemplateUsage.Help, "So genau wie möglich beschreiben und ungefähren Euro-Wert angeben!")]
             public string GestohlenesGut { get; set; }
-            [Optional]
-            [Prompt("Beschreiben Sie den Tatort. ")]
-            public string Bemerkung_Tatort { get; set; }
             [Optional]
             [Template(TemplateUsage.Help, "Erinnern Sie sich an Details? Wie viele Täter? Sahen Sie ein Fahrzeug?")]
             [Prompt("Beschreiben Sie die Tat. ")]

@@ -283,7 +283,7 @@ namespace HelpBot
                         foreach (var word in line.Words)
                         {
                             
-                                if (word.Text.ToLower().Equals(targetAttribute))
+                                if (word.Text.ToLower().Equals(targetAttribute.ToLower()))
                                 {
                                     return await drawRectanlge(url, line.Rectangle);
                                 }

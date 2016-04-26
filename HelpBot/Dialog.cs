@@ -11,6 +11,13 @@ using Microsoft.Bot.Connector;
 using Microsoft.ProjectOxford.Vision;
 using Microsoft.ProjectOxford.Vision.Contract;
 using Newtonsoft.Json;
+using System.Net;
+using System.IO;
+using System.Drawing;
+using System.Drawing.Imaging;
+using Microsoft.WindowsAzure.Storage.Blob;
+using Microsoft.WindowsAzure.Storage;
+using System.Configuration;
 
 namespace HelpBot
 {
@@ -30,7 +37,9 @@ namespace HelpBot
             string resp = "";
             LUISModel model = await GetEntityFromLUIS(message.Text);
             if (message.Attachments.Count > 0) {
-                PostAndWait(context, "Sieht aus wie " + await findDocAsync(message.Attachments[0].ContentUrl));
+                string testurl = "https://upload.wikimedia.org/wikipedia/commons/3/3f/A_Licence_2013_Front.jpg";
+                string doc  = await findDocAsync(testurl);
+                PostAndWait(context, "Sieht aus wie " + doc);
                 return;
             }
             if (model.intents.Count() > 0)
@@ -85,6 +94,43 @@ namespace HelpBot
                         resp = "In " + geo + " ist jetzt (" + DateTime.Now.Hour + ":" + DateTime.Now.Minute + ") " + isKurzpark + "Kurzparkzone";
                         PostAndWait(context, resp);
                         break;
+                    case "MarkOnDoc":
+                        if (model.entities.Count() > 0)
+                        {
+                            var target = model.entities.Where(a => a.type == "TargetAttribute").FirstOrDefault();
+                            string targetAttribute = null;
+                            if (target != null)
+                            {
+                                targetAttribute = target.entity;
+                            }
+                            else {
+
+                                PostAndWait(context, "Das habe ich leider nicht verstanden");
+                                return;
+
+                            }
+                            Document d = Document.documents().Where(x => x.names.Contains(model.entities.First().entity)).FirstOrDefault();
+                            if (d!= null) {
+                                int line = -1;
+                                d.attributes.TryGetValue(targetAttribute, out line);
+                                line = line == 0 ? -1:line;
+                                string respUrl =  await MarkLine(line, d.url, targetAttribute);
+                                Message msg = new Message();
+                                msg.Text = "Hier finden Sie " + targetAttribute + " ihres " + d.names.First();
+                                if (respUrl == "nicht gefunden") {
+                                    msg.Text = "Konnte " + targetAttribute + " ihres " + d.names.First() + " nicht finden";
+                                }
+                              
+                                List<Attachment> a = new List<Attachment>();
+                                a.Add(new Attachment(contentUrl: respUrl, contentType: "image/jpeg"));
+
+                                msg.Attachments = a;
+                                PostAndWait(context, msg);
+
+                            }
+                          
+                        }
+                        break;
                     default:
                         PostAndWait(context, "Das habe ich leider nicht verstanden");
                         break;
@@ -99,10 +145,21 @@ namespace HelpBot
 
         private async void PostAndWait(IDialogContext context, string resp)
         {
+
             await context.PostAsync(resp);
     
             context.Wait(MessageReceivedAsync);
         }
+        private async void PostAndWait(IDialogContext context, Message resp)
+        {
+         
+            await context.PostAsync(resp);
+   
+            context.Wait(MessageReceivedAsync);
+        }
+
+
+
         static List<String> docs = new List<string> { "geburtsurkunde", "heiratsurkunde", "sterbeurkunde", "führerschein", "reisepass", "personalausweis", "identitätsausweis", "staatsbürgerschaftsnachweis" };
         static VisionServiceClient visionClient = new VisionServiceClient("9cd97d789a4b4f019dd1770d0a516a1b");
         private async Task<string> findDocAsync(string url)
@@ -127,6 +184,118 @@ namespace HelpBot
 
             }
             return "leider nichts gefunden";
+        }
+
+        private async Task<String> drawRectanlge(string url, Microsoft.ProjectOxford.Vision.Contract.Rectangle rectangle) {
+
+            //draw rectangles
+            WebClient wc = new WebClient();
+            byte[] bytes = wc.DownloadData(url);
+            MemoryStream ms = new MemoryStream(bytes);
+            System.Drawing.Image img = System.Drawing.Image.FromStream(ms);
+
+
+
+            using (var graphics = Graphics.FromImage(img))
+            {
+                var rect = new System.Drawing.Rectangle(
+
+                rectangle.Left,
+
+                 rectangle.Top,
+
+                 rectangle.Width ,
+
+                 rectangle.Height 
+
+                 );
+                graphics.DrawRectangle(new Pen(Brushes.Red, 2), rect);
+                
+
+            }
+
+            return await upload(ToStream(img, ImageFormat.Jpeg));
+
+        }
+        public static Stream ToStream(Image image, ImageFormat formaw)
+        {
+            var stream = new System.IO.MemoryStream();
+            image.Save(stream, formaw);
+            stream.Position = 0;
+            return stream;
+        }
+        private async Task<string> upload(Stream photo)
+        {
+            var container = await ReadOrCreateContainerAsync("images");
+            var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            var random = new Random();
+            var result = new string(
+                Enumerable.Repeat(chars, 8)
+                          .Select(s => s[random.Next(s.Length)])
+                          .ToArray());
+            string imageName = result;
+            CloudBlockBlob blockBlob = container.GetBlockBlobReference(imageName+".jpg");
+            await blockBlob.UploadFromStreamAsync(photo);
+            return blockBlob.Uri.ToString();
+        }
+        public static async Task<CloudBlobContainer> ReadOrCreateContainerAsync(string containerName)
+        {
+            var container = Client.GetContainerReference(containerName);
+
+            // Create the container if it doesn't already exist.
+            await container.CreateIfNotExistsAsync();
+
+            return container;
+        }
+
+        private static CloudBlobClient client;
+        private static CloudBlobClient Client
+        {
+            get
+            {
+                if (client == null)
+                {
+                    // Retrieve storage account from connection string.
+                    CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
+                        "DefaultEndpointsProtocol=https;AccountName=helpgvstorage;AccountKey=D3iOx741aW/ddN7Qh2Rd0pmMX6BIgsqjKo9qUzZavV+SJE4eVVz5oBoe0Nol+eYfbTtz/UxsBxb2SQeBP4KvvQ==");
+
+                    // Create the blob client.
+                    client = storageAccount.CreateCloudBlobClient();
+                }
+
+                return client;
+            }
+        }
+
+        private async Task<string> MarkLine(int linenum, string url, string targetAttribute)
+        {
+            OcrResults analysisResult = await visionClient.RecognizeTextAsync(url);
+
+            if (linenum >= 0 && linenum < analysisResult.Regions[0].Lines.Count())
+            {
+                return await drawRectanlge(url, analysisResult.Regions[0].Lines[linenum].Rectangle);
+            }
+         
+                foreach (var region in analysisResult.Regions)
+                {
+                    foreach (var line in region.Lines)
+                    {
+                        foreach (var word in line.Words)
+                        {
+                            
+                                if (word.Text.ToLower().Equals(targetAttribute))
+                                {
+                                    return await drawRectanlge(url, line.Rectangle);
+                                }
+                            
+                        }
+                    }
+
+                }
+            
+          
+            return "nicht gefunden";
+        
         }
         private async Task DiebstahlsanzeigeComplete(IDialogContext context, IAwaitable<Diebstahlsanzeige> result)
         {

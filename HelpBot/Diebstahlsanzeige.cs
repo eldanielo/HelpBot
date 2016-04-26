@@ -7,7 +7,7 @@ using Microsoft.Bot.Builder.FormFlow;
 
 namespace HelpBot
 {
-    [Template(TemplateUsage.NotUnderstood, "Ich habe \"{0}\" nicht verstqanden", "Versuchen Sie es erneut, Ich habe \"{0}\" nicht verstanden.")]
+    [Template(TemplateUsage.NotUnderstood, "Ich habe \"{0}\" nicht verstanden", "Versuchen Sie es erneut, Ich habe \"{0}\" nicht verstanden.")]
     [Serializable]
     public class Diebstahlsanzeige
     {

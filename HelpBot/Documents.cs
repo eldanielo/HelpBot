@@ -18,7 +18,7 @@ namespace HelpBot
             List<Document> docs = new List<Document>() {
             new Document()
             {
-                names = new List<string> { "führerschein", "drivers license", "drivers", "license", "drvier" },
+                names = new List<string> { "führerschein", "drivers license", "drivers", "license", "driver" },
                 attributes = new Dictionary<string, int> {
                  {"name", 2 },
                 { "firstname",3 },
@@ -28,7 +28,7 @@ namespace HelpBot
                 {  "authority", 6},
                 {"number",  7},
                 },
-                url = "https://upload.wikimedia.org/wikipedia/commons/3/3f/A_Licence_2013_Front.jpg"
+                url = "http://helpgv.azurewebsites.net/a.jpg"
             },
             new Document()
             {
@@ -50,7 +50,7 @@ namespace HelpBot
             },
         new Document()
             {
-                names = new List<string> { "personalausweis"},
+                names = new List<string> { "personalausweis", "identiy card", "id", "identity"},
                            attributes = new Dictionary<string, int>(),
                 url = "http://www.lustenau.at/website/uploads/images/01/660x/personalausweis_austria.jpg?v=1"
             },

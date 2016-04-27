@@ -26,7 +26,7 @@ namespace HelpBot
     {
         public async Task StartAsync(IDialogContext context)
         {
-            context.Wait(MessageReceivedAsync);
+             context.Wait(MessageReceivedAsync);
         }
 
       
@@ -81,7 +81,20 @@ namespace HelpBot
                         string geo = "";
                         if (model.entities.Count() > 0)
                         {
-                            geo = model.entities.FirstOrDefault(e => e.type == "builtin.geography.city").entity;
+
+                            var geoEntity = model.entities.FirstOrDefault(e => e.type == "builtin.geography.city");
+                            if(geoEntity == null){
+                                geoEntity = model.entities.FirstOrDefault(e => e.type == "location");
+                            }
+                            if (geoEntity == null)
+                            {
+                                PostAndWait(context, "Ort nicht gefunden");
+                                return;
+                            }
+                            else {
+                                geo = geoEntity.entity;
+                            }
+
                         }
                         if (DateTime.Now.Hour > 8 && DateTime.Now.Hour < 22)
                         {
@@ -109,7 +122,9 @@ namespace HelpBot
                                 return;
 
                             }
-                            Document d = Document.documents().Where(x => x.names.Contains(model.entities.First().entity)).FirstOrDefault();
+                            var foundDoc = model.entities.Where(a => a.type =="DocumentType").First().entity.ToLower();
+                            Document d = Document.documents().Where(x => x.names.Contains(foundDoc)).FirstOrDefault();
+
                             if (d!= null) {
                                 int line = -1;
                                 d.attributes.TryGetValue(targetAttribute, out line);
@@ -128,7 +143,10 @@ namespace HelpBot
                                 PostAndWait(context, msg);
 
                             }
-                          
+                            else { 
+                            PostAndWait(context, "Dieses Document kenne ich nicht");
+                            }
+
                         }
                         break;
                     default:

@@ -66,10 +66,13 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Capture.PNG" />
     <Content Include="packages.config" />
     <Content Include="HELP.gv.at_ Ihr Wegweiser durch die Ämter und Behörden in Österreich_files\Home&amp;cid=10007.56021&amp;title=SG9tZQ==" />
     <Content Include="HELP.gv.at_ Ihr Wegweiser durch die Ämter und Behörden in Österreich_files\saved_resource" />
+    <None Include="Properties\PublishProfiles\helpgv - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\helpgv - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\helpgv.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

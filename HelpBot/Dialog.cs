@@ -38,8 +38,13 @@ namespace HelpBot
             LUISModel model = await GetEntityFromLUIS(message.Text);
             if (message.Attachments.Count > 0) {
                 string testurl = "https://upload.wikimedia.org/wikipedia/commons/3/3f/A_Licence_2013_Front.jpg";
-                string doc  = await findDocAsync(testurl);
-                PostAndWait(context, "Sieht aus wie " + doc);
+                Document doc  = await findDocAsync(testurl);
+                if (doc == null) {
+                    PostAndWait(context, "leider nichts gefunden");
+                }
+                else { 
+                PostAndWait(context, "Sieht aus wie ein(e)" + doc.names[0] +". Das könnte helfen " + doc.info );
+                }
                 return;
             }
             if (model.intents.Count() > 0)
@@ -77,35 +82,50 @@ namespace HelpBot
                         break;
                     case "park":
 
-                        string isKurzpark = "keine";
+                        string isKurzpark = " keine";
                         string geo = "";
+                        var datetime = DateTime.Now;
+
                         if (model.entities.Count() > 0)
                         {
 
                             var geoEntity = model.entities.FirstOrDefault(e => e.type == "builtin.geography.city");
-                            if(geoEntity == null){
-                                geoEntity = model.entities.FirstOrDefault(e => e.type == "location");
-                            }
                             if (geoEntity == null)
                             {
-                                PostAndWait(context, "Ort nicht gefunden");
-                                return;
+                                geoEntity = model.entities.FirstOrDefault(e => e.type == "location");
                             }
-                            else {
+                            else
+                            {
                                 geo = geoEntity.entity;
                             }
 
+                            //GET TIME
+                            var hasTime = model.entities.FirstOrDefault(e => e.type == "builtin.datetime.time");
+                            var time = hasTime != null ? hasTime.entity : null;
+                            if (time != null)
+                            {
+                                var parser = new Chronic.Parser();
+
+                                var span = parser.Parse(time);
+                                if (span != null)
+                                {
+                                    var when = span.Start ?? span.End;
+                                    datetime = when.Value;
+                                }
+                              }
                         }
-                        if (DateTime.Now.Hour > 8 && DateTime.Now.Hour < 22)
-                        {
-                            isKurzpark = "";
-                        }
-                        if (geo == "")
-                        {
-                            geo = GeoLocator.getCity().zipCode + " " + GeoLocator.getCity().cityName;
-                        }                   
-                        resp = "In " + geo + " ist jetzt (" + DateTime.Now.Hour + ":" + DateTime.Now.Minute + ") " + isKurzpark + "Kurzparkzone";
-                        PostAndWait(context, resp);
+                        if (datetime.Hour > 8 && datetime.Hour < 22)
+                            {
+                                isKurzpark = "";
+                            }
+                            if (geo == "")
+                            {
+                                geo = GeoLocator.getCity().zipCode + " " + GeoLocator.getCity().cityName;
+                            }
+                            resp = "In " + geo + " ist um " + datetime.ToString("HH:mm")+ isKurzpark + " Kurzparkzone";
+                            PostAndWait(context, resp);
+                 
+                        
                         break;
                     case "MarkOnDoc":
                         if (model.entities.Count() > 0)
@@ -180,7 +200,7 @@ namespace HelpBot
 
         static List<String> docs = new List<string> { "geburtsurkunde", "heiratsurkunde", "sterbeurkunde", "führerschein", "reisepass", "personalausweis", "identitätsausweis", "staatsbürgerschaftsnachweis" };
         static VisionServiceClient visionClient = new VisionServiceClient("9cd97d789a4b4f019dd1770d0a516a1b");
-        private async Task<string> findDocAsync(string url)
+        private async Task<Document> findDocAsync(string url)
         {
 
             OcrResults analysisResult = await visionClient.RecognizeTextAsync(url);
@@ -190,18 +210,22 @@ namespace HelpBot
                 {
                     foreach (var word in line.Words)
                     {
-                        foreach (var d in docs)
+                        foreach (var d in Document.documents())
                         {
-                            if (d.Equals(word.Text.ToLower()))
+                            foreach (var name in d.names)
                             {
-                                return d;
+                                if (name.Equals(word.Text.ToLower()))
+                                {
+                                    return d;
+                                }
+                              
                             }
                         }
                     }
                 }
 
             }
-            return "leider nichts gefunden";
+            return null;
         }
 
         private async Task<String> drawRectanlge(string url, Microsoft.ProjectOxford.Vision.Contract.Rectangle rectangle) {

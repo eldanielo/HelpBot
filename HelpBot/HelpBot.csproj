@@ -177,6 +177,7 @@
     <Content Include="packages.config" />
     <Content Include="Metadata\deploymentTemplates\apiappconfig.azureresource.json" />
     <Content Include="apiapp.json" />
+    <Content Include="HelpLuis.json" />
     <None Include="Properties\PublishProfiles\helpgv.pubxml" />
     <None Include="Properties\PublishProfiles\HelpGvBot - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\HelpGvBot - Web Deploy %282%29.pubxml" />

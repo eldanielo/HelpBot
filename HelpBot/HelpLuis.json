@@ -1,0 +1,2068 @@
+{
+  "luis_schema_version": "1.2.0",
+  "name": "HelpLuis",
+  "desc": "",
+  "culture": "en-us",
+  "intents": [
+    {
+      "Name": "park",
+      "Children": []
+    },
+    {
+      "Name": "lawnmowing",
+      "Children": []
+    },
+    {
+      "Name": "None",
+      "Children": []
+    },
+    {
+      "Name": "find",
+      "Children": []
+    },
+    {
+      "Name": "hi",
+      "Children": []
+    },
+    {
+      "Name": "ReportTheft",
+      "Children": []
+    },
+    {
+      "Name": "howareyou",
+      "Children": []
+    },
+    {
+      "Name": "MarkOnDoc",
+      "Children": []
+    }
+  ],
+  "entities": [
+    {
+      "Name": "location",
+      "Children": []
+    },
+    {
+      "Name": "TargetAttribute",
+      "Children": []
+    },
+    {
+      "Name": "Amt",
+      "Children": []
+    },
+    {
+      "Name": "DocumentType",
+      "Children": []
+    }
+  ],
+  "bing_entities": [
+    "datetime",
+    "geography"
+  ],
+  "actions": [],
+  "model_features": [
+    {
+      "name": "Formulare",
+      "mode": true,
+      "words": "Drivers license,Reisepass,heiratsurkunde,geburtsurkunde,sterbeurkunde,führerschein,reisepass,personalausweis,identitätsausweis,staatsbürgerschaftsnachweis",
+      "activated": true
+    }
+  ],
+  "regex_features": [],
+  "utterances": [
+    {
+      "text": "where is the nearest amt",
+      "intent": "find",
+      "entities": [
+        {
+          "entity": "Amt",
+          "startPos": 4,
+          "endPos": 4
+        }
+      ]
+    },
+    {
+      "text": "i want to mawn my lawn in seattle",
+      "intent": "lawnmowing",
+      "entities": []
+    },
+    {
+      "text": "helpgvbot was added to the conversation",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "am i allowed to mow my lawn today in vienna",
+      "intent": "lawnmowing",
+      "entities": []
+    },
+    {
+      "text": "report theft",
+      "intent": "ReportTheft",
+      "entities": []
+    },
+    {
+      "text": "i would like to give up a theft",
+      "intent": "ReportTheft",
+      "entities": []
+    },
+    {
+      "text": "am i allowed to mow my lawn now",
+      "intent": "lawnmowing",
+      "entities": []
+    },
+    {
+      "text": "someone stole something from me me",
+      "intent": "ReportTheft",
+      "entities": []
+    },
+    {
+      "text": "i was robbed",
+      "intent": "ReportTheft",
+      "entities": []
+    },
+    {
+      "text": "am i allowed to lown mower today",
+      "intent": "lawnmowing",
+      "entities": []
+    },
+    {
+      "text": "fgsd",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "i was burglured",
+      "intent": "ReportTheft",
+      "entities": []
+    },
+    {
+      "text": "i want to mawn my lawn at home",
+      "intent": "lawnmowing",
+      "entities": []
+    },
+    {
+      "text": "ich möchte rasenmähen",
+      "intent": "lawnmowing",
+      "entities": []
+    },
+    {
+      "text": "i would like to report a theft",
+      "intent": "ReportTheft",
+      "entities": []
+    },
+    {
+      "text": "kann ich heute den rasen mäh",
+      "intent": "lawnmowing",
+      "entities": []
+    },
+    {
+      "text": "wie geht es dir",
+      "intent": "howareyou",
+      "entities": []
+    },
+    {
+      "text": "reisepass ausfüllen",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "how long is my passport valid",
+      "intent": "None",
+      "entities": [
+        {
+          "entity": "DocumentType",
+          "startPos": 4,
+          "endPos": 4
+        }
+      ]
+    },
+    {
+      "text": "where do i get a heiratsurkunde",
+      "intent": "None",
+      "entities": [
+        {
+          "entity": "DocumentType",
+          "startPos": 5,
+          "endPos": 5
+        }
+      ]
+    },
+    {
+      "text": "theft",
+      "intent": "ReportTheft",
+      "entities": []
+    },
+    {
+      "text": "i would like start a form",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "rasenmähen",
+      "intent": "lawnmowing",
+      "entities": []
+    },
+    {
+      "text": "how do i get do the airport",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "ich möchte meinen mutter kind schein ausfüllen",
+      "intent": "None",
+      "entities": [
+        {
+          "entity": "DocumentType",
+          "startPos": 4,
+          "endPos": 4
+        },
+        {
+          "entity": "DocumentType",
+          "startPos": 5,
+          "endPos": 5
+        }
+      ]
+    },
+    {
+      "text": "dfasdfasdfsa",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "tell me about drivers licenses",
+      "intent": "None",
+      "entities": [
+        {
+          "entity": "DocumentType",
+          "startPos": 3,
+          "endPos": 3
+        },
+        {
+          "entity": "DocumentType",
+          "startPos": 4,
+          "endPos": 4
+        }
+      ]
+    },
+    {
+      "text": "is my passport still valid",
+      "intent": "None",
+      "entities": [
+        {
+          "entity": "DocumentType",
+          "startPos": 2,
+          "endPos": 2
+        }
+      ]
+    },
+    {
+      "text": "mow lan",
+      "intent": "lawnmowing",
+      "entities": []
+    },
+    {
+      "text": "i need a new drivers license",
+      "intent": "None",
+      "entities": [
+        {
+          "entity": "DocumentType",
+          "startPos": 4,
+          "endPos": 4
+        },
+        {
+          "entity": "DocumentType",
+          "startPos": 5,
+          "endPos": 5
+        }
+      ]
+    },
+    {
+      "text": "where is the nearest finanzamt",
+      "intent": "find",
+      "entities": [
+        {
+          "entity": "Amt",
+          "startPos": 4,
+          "endPos": 4
+        }
+      ]
+    },
+    {
+      "text": "where is the nearest zollamt",
+      "intent": "find",
+      "entities": [
+        {
+          "entity": "Amt",
+          "startPos": 4,
+          "endPos": 4
+        }
+      ]
+    },
+    {
+      "text": "where is the nearest gericht",
+      "intent": "find",
+      "entities": [
+        {
+          "entity": "Amt",
+          "startPos": 4,
+          "endPos": 4
+        }
+      ]
+    },
+    {
+      "text": "where is the next police station",
+      "intent": "find",
+      "entities": [
+        {
+          "entity": "Amt",
+          "startPos": 4,
+          "endPos": 4
+        },
+        {
+          "entity": "Amt",
+          "startPos": 5,
+          "endPos": 5
+        }
+      ]
+    },
+    {
+      "text": "where is the police station",
+      "intent": "find",
+      "entities": [
+        {
+          "entity": "Amt",
+          "startPos": 3,
+          "endPos": 3
+        },
+        {
+          "entity": "Amt",
+          "startPos": 4,
+          "endPos": 4
+        }
+      ]
+    },
+    {
+      "text": "where is the nearest police station",
+      "intent": "find",
+      "entities": [
+        {
+          "entity": "Amt",
+          "startPos": 4,
+          "endPos": 4
+        },
+        {
+          "entity": "Amt",
+          "startPos": 5,
+          "endPos": 5
+        }
+      ]
+    },
+    {
+      "text": "how do i get a new drivers license",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "hallo wie gehts es",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "find location for drivers license",
+      "intent": "None",
+      "entities": [
+        {
+          "entity": "DocumentType",
+          "startPos": 4,
+          "endPos": 4
+        }
+      ]
+    },
+    {
+      "text": "how are you feeling",
+      "intent": "howareyou",
+      "entities": []
+    },
+    {
+      "text": "where do get a new drivers license",
+      "intent": "None",
+      "entities": [
+        {
+          "entity": "DocumentType",
+          "startPos": 5,
+          "endPos": 5
+        },
+        {
+          "entity": "DocumentType",
+          "startPos": 6,
+          "endPos": 6
+        }
+      ]
+    },
+    {
+      "text": "darf ich morgen rasen mähen",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "can i lawn mower today",
+      "intent": "lawnmowing",
+      "entities": []
+    },
+    {
+      "text": "how are you feeling today",
+      "intent": "howareyou",
+      "entities": []
+    },
+    {
+      "text": "hallo wie geht es dir",
+      "intent": "howareyou",
+      "entities": []
+    },
+    {
+      "text": "how are you doing",
+      "intent": "howareyou",
+      "entities": []
+    },
+    {
+      "text": "how are you today",
+      "intent": "howareyou",
+      "entities": []
+    },
+    {
+      "text": "ich möchte heute rasen mähen",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "hi how are you",
+      "intent": "howareyou",
+      "entities": []
+    },
+    {
+      "text": "i can mow the lawn today",
+      "intent": "lawnmowing",
+      "entities": []
+    },
+    {
+      "text": "lawn mowing",
+      "intent": "lawnmowing",
+      "entities": []
+    },
+    {
+      "text": "how is it going",
+      "intent": "howareyou",
+      "entities": []
+    },
+    {
+      "text": "i lost my heiratsurkunde",
+      "intent": "None",
+      "entities": [
+        {
+          "entity": "DocumentType",
+          "startPos": 3,
+          "endPos": 3
+        }
+      ]
+    },
+    {
+      "text": "where can i get a new passport",
+      "intent": "None",
+      "entities": [
+        {
+          "entity": "DocumentType",
+          "startPos": 6,
+          "endPos": 6
+        }
+      ]
+    },
+    {
+      "text": "how are you",
+      "intent": "howareyou",
+      "entities": []
+    },
+    {
+      "text": "when does my license expire",
+      "intent": "None",
+      "entities": [
+        {
+          "entity": "DocumentType",
+          "startPos": 3,
+          "endPos": 3
+        }
+      ]
+    },
+    {
+      "text": "where do i get a new license",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "where is the nearest standesamt",
+      "intent": "find",
+      "entities": [
+        {
+          "entity": "Amt",
+          "startPos": 4,
+          "endPos": 4
+        }
+      ]
+    },
+    {
+      "text": "i want to mow the lawn",
+      "intent": "lawnmowing",
+      "entities": []
+    },
+    {
+      "text": "i lost my drivers license",
+      "intent": "None",
+      "entities": [
+        {
+          "entity": "DocumentType",
+          "startPos": 3,
+          "endPos": 3
+        },
+        {
+          "entity": "DocumentType",
+          "startPos": 4,
+          "endPos": 4
+        }
+      ]
+    },
+    {
+      "text": "how do i find the next police station",
+      "intent": "find",
+      "entities": [
+        {
+          "entity": "Amt",
+          "startPos": 6,
+          "endPos": 6
+        },
+        {
+          "entity": "Amt",
+          "startPos": 7,
+          "endPos": 7
+        }
+      ]
+    },
+    {
+      "text": "can i use my lawn mower tomorrow?",
+      "intent": "lawnmowing",
+      "entities": []
+    },
+    {
+      "text": "i want to mow my lawn tomorrow in seattle",
+      "intent": "lawnmowing",
+      "entities": []
+    },
+    {
+      "text": "i need information on travel documents",
+      "intent": "None",
+      "entities": [
+        {
+          "entity": "DocumentType",
+          "startPos": 4,
+          "endPos": 4
+        },
+        {
+          "entity": "DocumentType",
+          "startPos": 5,
+          "endPos": 5
+        }
+      ]
+    },
+    {
+      "text": "wann darf ich rasen mähen",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "rasen mähen",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "darf ich heute rasenmahen",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "i want to fill in my reisepass",
+      "intent": "None",
+      "entities": [
+        {
+          "entity": "DocumentType",
+          "startPos": 6,
+          "endPos": 6
+        }
+      ]
+    },
+    {
+      "text": "^gfdssa",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "how are you+",
+      "intent": "howareyou",
+      "entities": []
+    },
+    {
+      "text": "can i park here?",
+      "intent": "park",
+      "entities": []
+    },
+    {
+      "text": "can i park my car here",
+      "intent": "park",
+      "entities": []
+    },
+    {
+      "text": "am i allowed to park",
+      "intent": "park",
+      "entities": []
+    },
+    {
+      "text": "can i leave my car here",
+      "intent": "park",
+      "entities": []
+    },
+    {
+      "text": "i want to park here",
+      "intent": "park",
+      "entities": []
+    },
+    {
+      "text": "i want to leave my car here",
+      "intent": "park",
+      "entities": []
+    },
+    {
+      "text": "i am parking my car",
+      "intent": "park",
+      "entities": []
+    },
+    {
+      "text": "where is",
+      "intent": "find",
+      "entities": []
+    },
+    {
+      "text": "can i park in vienna today",
+      "intent": "park",
+      "entities": []
+    },
+    {
+      "text": "can i park in graz at 5",
+      "intent": "park",
+      "entities": []
+    },
+    {
+      "text": "can i park in seattle at 3",
+      "intent": "park",
+      "entities": []
+    },
+    {
+      "text": "am i alloowed to park here",
+      "intent": "park",
+      "entities": []
+    },
+    {
+      "text": "hi",
+      "intent": "hi",
+      "entities": []
+    },
+    {
+      "text": "hello",
+      "intent": "hi",
+      "entities": []
+    },
+    {
+      "text": "hallo",
+      "intent": "hi",
+      "entities": []
+    },
+    {
+      "text": "hey",
+      "intent": "hi",
+      "entities": []
+    },
+    {
+      "text": "sup",
+      "intent": "hi",
+      "entities": []
+    },
+    {
+      "text": "hola",
+      "intent": "hi",
+      "entities": []
+    },
+    {
+      "text": "servus",
+      "intent": "hi",
+      "entities": []
+    },
+    {
+      "text": "dere",
+      "intent": "hi",
+      "entities": []
+    },
+    {
+      "text": "can i park in vienna at 5pm",
+      "intent": "park",
+      "entities": []
+    },
+    {
+      "text": "can i park in vienna at 5",
+      "intent": "park",
+      "entities": []
+    },
+    {
+      "text": "where can i find a police station",
+      "intent": "find",
+      "entities": [
+        {
+          "entity": "Amt",
+          "startPos": 5,
+          "endPos": 5
+        },
+        {
+          "entity": "Amt",
+          "startPos": 6,
+          "endPos": 6
+        }
+      ]
+    },
+    {
+      "text": "i want to report a theft",
+      "intent": "ReportTheft",
+      "entities": []
+    },
+    {
+      "text": "\"builtin.datetime.time\"",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "can i park here",
+      "intent": "park",
+      "entities": []
+    },
+    {
+      "text": "kann ich heute rasen mähen",
+      "intent": "lawnmowing",
+      "entities": []
+    },
+    {
+      "text": "dewqerqw",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "ich möchte einen diebstahl melden",
+      "intent": "ReportTheft",
+      "entities": []
+    },
+    {
+      "text": "darf ich heute den rasen zu mähen",
+      "intent": "lawnmowing",
+      "entities": []
+    },
+    {
+      "text": "i can mow the lawn",
+      "intent": "lawnmowing",
+      "entities": []
+    },
+    {
+      "text": "darf ich heute rasen mäh",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "fgvsa",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "fadfas",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "ich wurde ausgeraubt",
+      "intent": "ReportTheft",
+      "entities": []
+    },
+    {
+      "text": "dfasd",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "wo ist die nächste police",
+      "intent": "find",
+      "entities": []
+    },
+    {
+      "text": "help",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "hilfe",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "halp",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "where is my führerschein number",
+      "intent": "MarkOnDoc",
+      "entities": [
+        {
+          "entity": "DocumentType",
+          "startPos": 3,
+          "endPos": 3
+        },
+        {
+          "entity": "TargetAttribute",
+          "startPos": 4,
+          "endPos": 4
+        }
+      ]
+    },
+    {
+      "text": "what is my führerschein number",
+      "intent": "MarkOnDoc",
+      "entities": [
+        {
+          "entity": "DocumentType",
+          "startPos": 3,
+          "endPos": 3
+        },
+        {
+          "entity": "TargetAttribute",
+          "startPos": 4,
+          "endPos": 4
+        }
+      ]
+    },
+    {
+      "text": "how long is my drivers license valid",
+      "intent": "MarkOnDoc",
+      "entities": [
+        {
+          "entity": "DocumentType",
+          "startPos": 4,
+          "endPos": 4
+        },
+        {
+          "entity": "DocumentType",
+          "startPos": 5,
+          "endPos": 5
+        },
+        {
+          "entity": "TargetAttribute",
+          "startPos": 6,
+          "endPos": 6
+        }
+      ]
+    },
+    {
+      "text": "wie lang ist mein führerschein gültig",
+      "intent": "MarkOnDoc",
+      "entities": [
+        {
+          "entity": "DocumentType",
+          "startPos": 4,
+          "endPos": 4
+        },
+        {
+          "entity": "TargetAttribute",
+          "startPos": 5,
+          "endPos": 5
+        }
+      ]
+    },
+    {
+      "text": "when does my drivers license expire",
+      "intent": "MarkOnDoc",
+      "entities": [
+        {
+          "entity": "DocumentType",
+          "startPos": 3,
+          "endPos": 3
+        },
+        {
+          "entity": "TargetAttribute",
+          "startPos": 5,
+          "endPos": 5
+        }
+      ]
+    },
+    {
+      "text": "when was my drivers license registered",
+      "intent": "MarkOnDoc",
+      "entities": [
+        {
+          "entity": "DocumentType",
+          "startPos": 3,
+          "endPos": 3
+        },
+        {
+          "entity": "DocumentType",
+          "startPos": 4,
+          "endPos": 4
+        },
+        {
+          "entity": "TargetAttribute",
+          "startPos": 5,
+          "endPos": 5
+        }
+      ]
+    },
+    {
+      "text": "where was my drivers license registered",
+      "intent": "MarkOnDoc",
+      "entities": [
+        {
+          "entity": "DocumentType",
+          "startPos": 3,
+          "endPos": 3
+        },
+        {
+          "entity": "DocumentType",
+          "startPos": 4,
+          "endPos": 4
+        },
+        {
+          "entity": "TargetAttribute",
+          "startPos": 5,
+          "endPos": 5
+        }
+      ]
+    },
+    {
+      "text": "what is my driver license number",
+      "intent": "MarkOnDoc",
+      "entities": [
+        {
+          "entity": "DocumentType",
+          "startPos": 3,
+          "endPos": 3
+        },
+        {
+          "entity": "DocumentType",
+          "startPos": 4,
+          "endPos": 4
+        },
+        {
+          "entity": "TargetAttribute",
+          "startPos": 5,
+          "endPos": 5
+        }
+      ]
+    },
+    {
+      "text": "what is my reisepass number",
+      "intent": "MarkOnDoc",
+      "entities": [
+        {
+          "entity": "DocumentType",
+          "startPos": 3,
+          "endPos": 3
+        },
+        {
+          "entity": "TargetAttribute",
+          "startPos": 4,
+          "endPos": 4
+        }
+      ]
+    },
+    {
+      "text": "where was my reispeass registered",
+      "intent": "MarkOnDoc",
+      "entities": [
+        {
+          "entity": "DocumentType",
+          "startPos": 3,
+          "endPos": 3
+        },
+        {
+          "entity": "TargetAttribute",
+          "startPos": 4,
+          "endPos": 4
+        }
+      ]
+    },
+    {
+      "text": "whats the date on my license",
+      "intent": "MarkOnDoc",
+      "entities": [
+        {
+          "entity": "DocumentType",
+          "startPos": 5,
+          "endPos": 5
+        },
+        {
+          "entity": "TargetAttribute",
+          "startPos": 2,
+          "endPos": 2
+        }
+      ]
+    },
+    {
+      "text": "whats the birthday on my license",
+      "intent": "MarkOnDoc",
+      "entities": [
+        {
+          "entity": "DocumentType",
+          "startPos": 5,
+          "endPos": 5
+        },
+        {
+          "entity": "TargetAttribute",
+          "startPos": 2,
+          "endPos": 2
+        }
+      ]
+    },
+    {
+      "text": "whats the authority on my license",
+      "intent": "MarkOnDoc",
+      "entities": [
+        {
+          "entity": "DocumentType",
+          "startPos": 5,
+          "endPos": 5
+        },
+        {
+          "entity": "TargetAttribute",
+          "startPos": 2,
+          "endPos": 2
+        }
+      ]
+    },
+    {
+      "text": "where is the birthday on my führerschein",
+      "intent": "MarkOnDoc",
+      "entities": [
+        {
+          "entity": "DocumentType",
+          "startPos": 6,
+          "endPos": 6
+        },
+        {
+          "entity": "TargetAttribute",
+          "startPos": 3,
+          "endPos": 3
+        }
+      ]
+    },
+    {
+      "text": "where is the name on my license",
+      "intent": "MarkOnDoc",
+      "entities": [
+        {
+          "entity": "DocumentType",
+          "startPos": 6,
+          "endPos": 6
+        },
+        {
+          "entity": "TargetAttribute",
+          "startPos": 3,
+          "endPos": 3
+        }
+      ]
+    },
+    {
+      "text": "what is my drivers license number",
+      "intent": "MarkOnDoc",
+      "entities": [
+        {
+          "entity": "DocumentType",
+          "startPos": 3,
+          "endPos": 3
+        },
+        {
+          "entity": "DocumentType",
+          "startPos": 4,
+          "endPos": 4
+        },
+        {
+          "entity": "TargetAttribute",
+          "startPos": 5,
+          "endPos": 5
+        }
+      ]
+    },
+    {
+      "text": "hio",
+      "intent": "hi",
+      "entities": []
+    },
+    {
+      "text": "ein",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "dfasdf",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "bericht-diebstahl",
+      "intent": "ReportTheft",
+      "entities": []
+    },
+    {
+      "text": "where is my sex on my personalausweis",
+      "intent": "MarkOnDoc",
+      "entities": [
+        {
+          "entity": "DocumentType",
+          "startPos": 6,
+          "endPos": 6
+        },
+        {
+          "entity": "TargetAttribute",
+          "startPos": 3,
+          "endPos": 3
+        }
+      ]
+    },
+    {
+      "text": "what is my drivers license name",
+      "intent": "MarkOnDoc",
+      "entities": [
+        {
+          "entity": "DocumentType",
+          "startPos": 4,
+          "endPos": 4
+        },
+        {
+          "entity": "TargetAttribute",
+          "startPos": 5,
+          "endPos": 5
+        }
+      ]
+    },
+    {
+      "text": "something was stolen",
+      "intent": "ReportTheft",
+      "entities": []
+    },
+    {
+      "text": "wtf",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "wo ist das nächste standesamt",
+      "intent": "find",
+      "entities": [
+        {
+          "entity": "Amt",
+          "startPos": 4,
+          "endPos": 4
+        }
+      ]
+    },
+    {
+      "text": "ich kann den rasen mähen heute",
+      "intent": "lawnmowing",
+      "entities": []
+    },
+    {
+      "text": "dsaff",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "where is my datumon my personalausweis",
+      "intent": "MarkOnDoc",
+      "entities": [
+        {
+          "entity": "DocumentType",
+          "startPos": 5,
+          "endPos": 5
+        }
+      ]
+    },
+    {
+      "text": "dfas",
+      "intent": "hi",
+      "entities": []
+    },
+    {
+      "text": "wo ist die nächste polizei bahnhof",
+      "intent": "find",
+      "entities": [
+        {
+          "entity": "Amt",
+          "startPos": 4,
+          "endPos": 4
+        },
+        {
+          "entity": "Amt",
+          "startPos": 5,
+          "endPos": 5
+        }
+      ]
+    },
+    {
+      "text": "wo ist die nächste polizei",
+      "intent": "find",
+      "entities": [
+        {
+          "entity": "Amt",
+          "startPos": 4,
+          "endPos": 4
+        }
+      ]
+    },
+    {
+      "text": "where is a school",
+      "intent": "find",
+      "entities": [
+        {
+          "entity": "Amt",
+          "startPos": 3,
+          "endPos": 3
+        }
+      ]
+    },
+    {
+      "text": "where is my personalausweis nummer",
+      "intent": "MarkOnDoc",
+      "entities": [
+        {
+          "entity": "DocumentType",
+          "startPos": 3,
+          "endPos": 3
+        },
+        {
+          "entity": "TargetAttribute",
+          "startPos": 4,
+          "endPos": 4
+        }
+      ]
+    },
+    {
+      "text": "wheres my drivers number",
+      "intent": "MarkOnDoc",
+      "entities": [
+        {
+          "entity": "DocumentType",
+          "startPos": 2,
+          "endPos": 2
+        },
+        {
+          "entity": "TargetAttribute",
+          "startPos": 3,
+          "endPos": 3
+        }
+      ]
+    },
+    {
+      "text": "where is my date on my personalausweis",
+      "intent": "MarkOnDoc",
+      "entities": [
+        {
+          "entity": "DocumentType",
+          "startPos": 6,
+          "endPos": 6
+        },
+        {
+          "entity": "TargetAttribute",
+          "startPos": 3,
+          "endPos": 3
+        }
+      ]
+    },
+    {
+      "text": "wie geht es",
+      "intent": "howareyou",
+      "entities": []
+    },
+    {
+      "text": "whats the name on my license",
+      "intent": "MarkOnDoc",
+      "entities": [
+        {
+          "entity": "DocumentType",
+          "startPos": 5,
+          "endPos": 5
+        },
+        {
+          "entity": "TargetAttribute",
+          "startPos": 2,
+          "endPos": 2
+        }
+      ]
+    },
+    {
+      "text": "how long is my führerschein valid",
+      "intent": "MarkOnDoc",
+      "entities": [
+        {
+          "entity": "DocumentType",
+          "startPos": 4,
+          "endPos": 4
+        },
+        {
+          "entity": "TargetAttribute",
+          "startPos": 5,
+          "endPos": 5
+        }
+      ]
+    },
+    {
+      "text": "where is the nearest school",
+      "intent": "find",
+      "entities": [
+        {
+          "entity": "Amt",
+          "startPos": 4,
+          "endPos": 4
+        }
+      ]
+    },
+    {
+      "text": "wo ist die nächstgelegene polizeidienststelle",
+      "intent": "find",
+      "entities": [
+        {
+          "entity": "Amt",
+          "startPos": 4,
+          "endPos": 4
+        }
+      ]
+    },
+    {
+      "text": "where is my driver license number",
+      "intent": "MarkOnDoc",
+      "entities": [
+        {
+          "entity": "DocumentType",
+          "startPos": 3,
+          "endPos": 3
+        },
+        {
+          "entity": "DocumentType",
+          "startPos": 4,
+          "endPos": 4
+        },
+        {
+          "entity": "TargetAttribute",
+          "startPos": 5,
+          "endPos": 5
+        }
+      ]
+    },
+    {
+      "text": "whats the number on my licenes",
+      "intent": "MarkOnDoc",
+      "entities": [
+        {
+          "entity": "DocumentType",
+          "startPos": 5,
+          "endPos": 5
+        },
+        {
+          "entity": "TargetAttribute",
+          "startPos": 2,
+          "endPos": 2
+        }
+      ]
+    },
+    {
+      "text": "authority",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "wo ist die nächste polizeistation",
+      "intent": "find",
+      "entities": [
+        {
+          "entity": "Amt",
+          "startPos": 4,
+          "endPos": 4
+        }
+      ]
+    },
+    {
+      "text": "where is the number on the the drivers license",
+      "intent": "MarkOnDoc",
+      "entities": [
+        {
+          "entity": "DocumentType",
+          "startPos": 8,
+          "endPos": 8
+        },
+        {
+          "entity": "TargetAttribute",
+          "startPos": 3,
+          "endPos": 3
+        }
+      ]
+    },
+    {
+      "text": "where is the name on the license",
+      "intent": "MarkOnDoc",
+      "entities": [
+        {
+          "entity": "DocumentType",
+          "startPos": 6,
+          "endPos": 6
+        },
+        {
+          "entity": "TargetAttribute",
+          "startPos": 3,
+          "endPos": 3
+        }
+      ]
+    },
+    {
+      "text": "jemand hat mich etwas von mir gestohlen",
+      "intent": "ReportTheft",
+      "entities": []
+    },
+    {
+      "text": "wie geht es dir heute",
+      "intent": "howareyou",
+      "entities": []
+    },
+    {
+      "text": "how long is my license valid",
+      "intent": "MarkOnDoc",
+      "entities": [
+        {
+          "entity": "DocumentType",
+          "startPos": 4,
+          "endPos": 4
+        }
+      ]
+    },
+    {
+      "text": "whats the number on my license",
+      "intent": "MarkOnDoc",
+      "entities": [
+        {
+          "entity": "DocumentType",
+          "startPos": 5,
+          "endPos": 5
+        },
+        {
+          "entity": "TargetAttribute",
+          "startPos": 2,
+          "endPos": 2
+        }
+      ]
+    },
+    {
+      "text": "i want to mow my lawn",
+      "intent": "lawnmowing",
+      "entities": []
+    },
+    {
+      "text": "where is my drivers license birthday",
+      "intent": "MarkOnDoc",
+      "entities": [
+        {
+          "entity": "DocumentType",
+          "startPos": 3,
+          "endPos": 3
+        },
+        {
+          "entity": "DocumentType",
+          "startPos": 4,
+          "endPos": 4
+        },
+        {
+          "entity": "TargetAttribute",
+          "startPos": 5,
+          "endPos": 5
+        }
+      ]
+    },
+    {
+      "text": "whats the firstname on my license",
+      "intent": "MarkOnDoc",
+      "entities": [
+        {
+          "entity": "DocumentType",
+          "startPos": 5,
+          "endPos": 5
+        },
+        {
+          "entity": "TargetAttribute",
+          "startPos": 2,
+          "endPos": 2
+        }
+      ]
+    },
+    {
+      "text": "where is my firstname on my führerschein",
+      "intent": "MarkOnDoc",
+      "entities": [
+        {
+          "entity": "DocumentType",
+          "startPos": 6,
+          "endPos": 6
+        },
+        {
+          "entity": "TargetAttribute",
+          "startPos": 3,
+          "endPos": 3
+        }
+      ]
+    },
+    {
+      "text": "where is a police",
+      "intent": "find",
+      "entities": []
+    },
+    {
+      "text": "dd",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "how are yu",
+      "intent": "howareyou",
+      "entities": []
+    },
+    {
+      "text": "where is my drivers license birthdaywhere is my drivers license birthday",
+      "intent": "MarkOnDoc",
+      "entities": [
+        {
+          "entity": "DocumentType",
+          "startPos": 3,
+          "endPos": 3
+        },
+        {
+          "entity": "DocumentType",
+          "startPos": 4,
+          "endPos": 4
+        },
+        {
+          "entity": "DocumentType",
+          "startPos": 8,
+          "endPos": 8
+        },
+        {
+          "entity": "DocumentType",
+          "startPos": 9,
+          "endPos": 9
+        },
+        {
+          "entity": "TargetAttribute",
+          "startPos": 10,
+          "endPos": 10
+        }
+      ]
+    },
+    {
+      "text": "where is the nearest polcei",
+      "intent": "find",
+      "entities": [
+        {
+          "entity": "Amt",
+          "startPos": 4,
+          "endPos": 4
+        }
+      ]
+    },
+    {
+      "text": "what is my drivers license numberwhat is my drivers license number",
+      "intent": "MarkOnDoc",
+      "entities": [
+        {
+          "entity": "DocumentType",
+          "startPos": 3,
+          "endPos": 3
+        },
+        {
+          "entity": "DocumentType",
+          "startPos": 4,
+          "endPos": 4
+        },
+        {
+          "entity": "DocumentType",
+          "startPos": 8,
+          "endPos": 8
+        },
+        {
+          "entity": "DocumentType",
+          "startPos": 9,
+          "endPos": 9
+        },
+        {
+          "entity": "TargetAttribute",
+          "startPos": 10,
+          "endPos": 10
+        }
+      ]
+    },
+    {
+      "text": "where is my drivers number",
+      "intent": "MarkOnDoc",
+      "entities": [
+        {
+          "entity": "DocumentType",
+          "startPos": 3,
+          "endPos": 3
+        },
+        {
+          "entity": "TargetAttribute",
+          "startPos": 4,
+          "endPos": 4
+        }
+      ]
+    },
+    {
+      "text": "where is my geburtsdatum on my personalausweis",
+      "intent": "MarkOnDoc",
+      "entities": [
+        {
+          "entity": "DocumentType",
+          "startPos": 6,
+          "endPos": 6
+        },
+        {
+          "entity": "TargetAttribute",
+          "startPos": 3,
+          "endPos": 3
+        }
+      ]
+    },
+    {
+      "text": "where is the police",
+      "intent": "find",
+      "entities": []
+    },
+    {
+      "text": "where is my drivers license number",
+      "intent": "MarkOnDoc",
+      "entities": [
+        {
+          "entity": "DocumentType",
+          "startPos": 4,
+          "endPos": 4
+        },
+        {
+          "entity": "TargetAttribute",
+          "startPos": 5,
+          "endPos": 5
+        }
+      ]
+    },
+    {
+      "text": "where is the number on my identity card",
+      "intent": "MarkOnDoc",
+      "entities": [
+        {
+          "entity": "DocumentType",
+          "startPos": 6,
+          "endPos": 6
+        },
+        {
+          "entity": "TargetAttribute",
+          "startPos": 3,
+          "endPos": 3
+        }
+      ]
+    },
+    {
+      "text": "kann ich hier parken?",
+      "intent": "park",
+      "entities": []
+    },
+    {
+      "text": "how are you toda",
+      "intent": "howareyou",
+      "entities": []
+    },
+    {
+      "text": "ich kann hier parken",
+      "intent": "park",
+      "entities": []
+    },
+    {
+      "text": "var chars = \"abcdefghijklmnopqrstuvwxyz0123456789\";",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "hallo, wie geht es dir",
+      "intent": "howareyou",
+      "entities": []
+    },
+    {
+      "text": "where is my personalausweis sex",
+      "intent": "MarkOnDoc",
+      "entities": [
+        {
+          "entity": "DocumentType",
+          "startPos": 3,
+          "endPos": 3
+        },
+        {
+          "entity": "TargetAttribute",
+          "startPos": 4,
+          "endPos": 4
+        }
+      ]
+    },
+    {
+      "text": "who long is the drivers license valid",
+      "intent": "MarkOnDoc",
+      "entities": [
+        {
+          "entity": "DocumentType",
+          "startPos": 5,
+          "endPos": 5
+        },
+        {
+          "entity": "TargetAttribute",
+          "startPos": 6,
+          "endPos": 6
+        }
+      ]
+    },
+    {
+      "text": "whats the authority on the drivers license",
+      "intent": "MarkOnDoc",
+      "entities": [
+        {
+          "entity": "DocumentType",
+          "startPos": 5,
+          "endPos": 5
+        },
+        {
+          "entity": "DocumentType",
+          "startPos": 6,
+          "endPos": 6
+        },
+        {
+          "entity": "TargetAttribute",
+          "startPos": 2,
+          "endPos": 2
+        }
+      ]
+    },
+    {
+      "text": "how long is my driver license valid?",
+      "intent": "MarkOnDoc",
+      "entities": [
+        {
+          "entity": "DocumentType",
+          "startPos": 4,
+          "endPos": 4
+        },
+        {
+          "entity": "DocumentType",
+          "startPos": 5,
+          "endPos": 5
+        },
+        {
+          "entity": "TargetAttribute",
+          "startPos": 6,
+          "endPos": 6
+        }
+      ]
+    },
+    {
+      "text": "how long is my driver’s license valid?",
+      "intent": "MarkOnDoc",
+      "entities": [
+        {
+          "entity": "DocumentType",
+          "startPos": 7,
+          "endPos": 7
+        },
+        {
+          "entity": "TargetAttribute",
+          "startPos": 8,
+          "endPos": 8
+        }
+      ]
+    },
+    {
+      "text": "who long is my drivers license valid",
+      "intent": "MarkOnDoc",
+      "entities": [
+        {
+          "entity": "DocumentType",
+          "startPos": 4,
+          "endPos": 4
+        },
+        {
+          "entity": "DocumentType",
+          "startPos": 5,
+          "endPos": 5
+        },
+        {
+          "entity": "TargetAttribute",
+          "startPos": 6,
+          "endPos": 6
+        }
+      ]
+    },
+    {
+      "text": "who long is my drivers license valid#",
+      "intent": "MarkOnDoc",
+      "entities": [
+        {
+          "entity": "DocumentType",
+          "startPos": 4,
+          "endPos": 4
+        },
+        {
+          "entity": "DocumentType",
+          "startPos": 5,
+          "endPos": 5
+        },
+        {
+          "entity": "TargetAttribute",
+          "startPos": 6,
+          "endPos": 6
+        }
+      ]
+    },
+    {
+      "text": "am i allowed to park my car in salzburg",
+      "intent": "park",
+      "entities": [
+        {
+          "entity": "location",
+          "startPos": 8,
+          "endPos": 8
+        }
+      ]
+    },
+    {
+      "text": "can i park in 1060 vienna",
+      "intent": "park",
+      "entities": [
+        {
+          "entity": "location",
+          "startPos": 4,
+          "endPos": 4
+        },
+        {
+          "entity": "location",
+          "startPos": 5,
+          "endPos": 5
+        }
+      ]
+    },
+    {
+      "text": "can i park in salzburg",
+      "intent": "park",
+      "entities": [
+        {
+          "entity": "location",
+          "startPos": 4,
+          "endPos": 4
+        }
+      ]
+    },
+    {
+      "text": "can i park in bregenz",
+      "intent": "park",
+      "entities": [
+        {
+          "entity": "location",
+          "startPos": 4,
+          "endPos": 4
+        }
+      ]
+    },
+    {
+      "text": "can i park in eisenstadt",
+      "intent": "park",
+      "entities": []
+    },
+    {
+      "text": "can i park in meidling",
+      "intent": "park",
+      "entities": []
+    },
+    {
+      "text": "can i park in siebenhirten",
+      "intent": "park",
+      "entities": []
+    },
+    {
+      "text": "can i park in tschibuti",
+      "intent": "park",
+      "entities": []
+    },
+    {
+      "text": "am i allowed to park my car in meidling",
+      "intent": "park",
+      "entities": [
+        {
+          "entity": "location",
+          "startPos": 8,
+          "endPos": 8
+        }
+      ]
+    },
+    {
+      "text": "am i allowed to park my car in thschbu",
+      "intent": "park",
+      "entities": [
+        {
+          "entity": "location",
+          "startPos": 8,
+          "endPos": 8
+        }
+      ]
+    },
+    {
+      "text": "am i allowed to park my car in amsterdam?",
+      "intent": "park",
+      "entities": [
+        {
+          "entity": "location",
+          "startPos": 8,
+          "endPos": 8
+        }
+      ]
+    },
+    {
+      "text": "am i allowed to park my car in amsterdam",
+      "intent": "park",
+      "entities": [
+        {
+          "entity": "location",
+          "startPos": 8,
+          "endPos": 8
+        }
+      ]
+    },
+    {
+      "text": "am i allowed to park in vienna",
+      "intent": "park",
+      "entities": []
+    },
+    {
+      "text": "can i park in vienna",
+      "intent": "park",
+      "entities": []
+    },
+    {
+      "text": "am i allowed to park in 1060 vienna",
+      "intent": "park",
+      "entities": [
+        {
+          "entity": "location",
+          "startPos": 6,
+          "endPos": 6
+        },
+        {
+          "entity": "location",
+          "startPos": 7,
+          "endPos": 7
+        }
+      ]
+    },
+    {
+      "text": "can i park in tschiu",
+      "intent": "park",
+      "entities": []
+    },
+    {
+      "text": "ich möchte den rasen zu mähen",
+      "intent": "lawnmowing",
+      "entities": []
+    },
+    {
+      "text": "fasdfa",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "fasdf",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "where is the nearest police?",
+      "intent": "find",
+      "entities": [
+        {
+          "entity": "Amt",
+          "startPos": 4,
+          "endPos": 4
+        }
+      ]
+    },
+    {
+      "text": "personal id card",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "ich wurde bestohlen",
+      "intent": "ReportTheft",
+      "entities": []
+    },
+    {
+      "text": "attributes = new dictionary<string, int>(),",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "where can i get information about employment rights?",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "where is the next hospital",
+      "intent": "find",
+      "entities": [
+        {
+          "entity": "Amt",
+          "startPos": 4,
+          "endPos": 4
+        }
+      ]
+    },
+    {
+      "text": "model.entities.first().entity.tolower())",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "postandwait(context, \"das habe ich leider nicht verstanden\");",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "message msg = new message();",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "kann ich heute rasenmähen",
+      "intent": "lawnmowing",
+      "entities": []
+    },
+    {
+      "text": "is there free parking in meidling?",
+      "intent": "None",
+      "entities": []
+    }
+  ]
+}

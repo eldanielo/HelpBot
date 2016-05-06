@@ -28,13 +28,8 @@ namespace HelpBot
           
             [Prompt("Was ist Ihr {&}? ")]
             public String Name { get; set; }
-            public enum geschlecht { Männlich, Weiblich };
-            [Prompt("Was ist Ihr {&}? {||}")]
-            public geschlecht? Geschlecht { get; set; }
-            [Numeric(0,double.MaxValue)]    
-            [Prompt("Was ist Ihre {&}? ")]
-            public string Telefonnummerr { get; set; }
-
+   
+         
             public Adresse Adresse { get; set; }
 
         }

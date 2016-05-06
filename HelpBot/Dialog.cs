@@ -38,12 +38,12 @@ namespace HelpBot
             LUISModel model = await GetEntityFromLUIS(message.Text);
             if (message.Attachments.Count > 0) {
                 string testurl = "https://upload.wikimedia.org/wikipedia/commons/3/3f/A_Licence_2013_Front.jpg";
-                Document doc  = await findDocAsync(testurl);
+                Document doc  = await findDocAsync(message.Attachments[0].ContentUrl);
                 if (doc == null) {
                     PostAndWait(context, "leider nichts gefunden");
                 }
                 else { 
-                PostAndWait(context, "Sieht aus wie ein(e)" + doc.names[0] +". Das könnte helfen " + doc.info );
+                PostAndWait(context, "Sieht aus wie ein(e) " + doc.names[0] +". Das könnte helfen " + doc.info );
                 }
                 return;
             }
@@ -66,13 +66,23 @@ namespace HelpBot
                         if (model.entities.Count() > 0)
                         {
                             entity = model.entities.FirstOrDefault(e => e.type == "Amt").entity;
-                            resp = "Die näheste " + entity + " von Ihrer Position (" + GeoLocator.getCity().zipCode + " " + GeoLocator.getCity().cityName + ") ist Josef-Holaubek-Platz 1 1090 Wien (DUMMY DATEN)";
 
+                            var geoEntity = model.entities.FirstOrDefault(e => e.type == "builtin.geography.city");
+                            if (geoEntity == null)
+                            {
+                                resp = "Die näheste " + entity + " ist Stumpergasse 42, 1060 Wien";
+                            }
+                            else
+                            {
+                                resp = "Die näheste " + entity + " von " + geoEntity.entity + " ist Stumpergasse 42, 1060 Wien";
+
+                            }
                         }
+
                         else
                         {
                             resp = "Ich konnt das leider nicht finden";
-                       
+
                         }
                         PostAndWait(context, resp);
                         break;
